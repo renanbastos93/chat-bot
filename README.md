@@ -9,3 +9,8 @@ $ git clone https://github.com/renanbastos93/chat-bot.git
 $ npm install
 $ node main.js
 ```
+
+## Commands
+
+1. exit (close session)
+2. query (your question for chatbot)
