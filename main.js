@@ -1,22 +1,34 @@
-var apiai = require('apiai');
- 
-var app = apiai("f0d449afa86d439fbf45e9307f15db2f");
- 
-var options = {    
-    // proxyHost: '192.168.7.253',
-    // proxyPort: 8080,
-    sessionId: "132131213"
-};
+const apiai = require('apiai');
+const app = apiai("f0d449afa86d439fbf45e9307f15db2f"); // Access Token
 
-var request = app.textRequest('Ola', options);
+const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
- 
-request.on('response', function(response) {
-    console.log(response);
-});
- 
-request.on('error', function(error) {
-    console.log(error);
-});
- 
-request.end();
+console.log("Welcome the Chat Bot of the HemoHeroes!");
+
+rl.on('line', 
+    (input) => {
+        if(input == "exit"){
+            console.log("Thanks see you later!");
+            rl.close();
+        }else{
+            app.textRequest(input, {    
+                sessionId: "132131213" //can random id
+            })
+            .on('response', function(response) {
+                if(response.status.code == 200){
+                    console.log(`HemoHeroes > ${response.result.fulfillment.speech}`) // Print message of bot
+                }else{
+                    console.log("Sorry not receive message!")
+                }
+            })
+            .on('error', function(error) {
+                console.log(`Oops... Error: ${error}`);
+            })
+            .end();
+        }
+    }
+);

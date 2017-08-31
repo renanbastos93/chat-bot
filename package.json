@@ -1,15 +1,14 @@
 {
-  "name": "bot",
+  "name": "chatbot-hemoheroes",
   "version": "1.0.0",
-  "description": "",
+  "description": "Chat bot speak about donation blood using api.ai",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Renan Bastos - renanbastos.tec@gmail.com",
+  "license": "MIT",
   "dependencies": {
-    "apiai": "^4.0.3",
-    "apiai-proxy": "^1.0.3"
+    "apiai": "^4.0.3"
   }
 }
